@@ -1,0 +1,11 @@
+version: "1.0"
+name: "SQL-Master-Env"
+entry_point: "app:app"
+description: "A real-world SQL practice environment for AI agents."
+tasks:
+  - id: "query_users"
+    difficulty: "easy"
+  - id: "count_orders"
+    difficulty: "medium"
+  - id: "complex_join"
+    difficulty: "hard"
