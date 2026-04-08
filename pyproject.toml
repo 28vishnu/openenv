@@ -3,12 +3,16 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sql-master-env"
+name = "openenv-submission"
 version = "0.1.0"
-description = "A real-world SQL practice environment for AI agents."
+description = "Round 1 OpenEnv Submission"
 dependencies = [
     "fastapi",
     "uvicorn",
     "openai",
-    "python-multipart"
+    "python-multipart",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:app"
