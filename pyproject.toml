@@ -15,4 +15,5 @@ dependencies = [
 ]
 
 [project.scripts]
-server = "server.app:app"
+# This MUST point to the main function in your app.py
+server = "server.app:main"
