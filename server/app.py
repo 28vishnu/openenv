@@ -1,5 +1,6 @@
+import uvicorn
 from fastapi import FastAPI, Body
-from environment import SQLEnv
+from server.environment import SQLEnv # Ensure this matches your filename
 
 app = FastAPI()
 env = SQLEnv()
@@ -16,3 +17,11 @@ async def step(payload: dict = Body(...)):
     action = payload.get("action", "")
     obs, reward, done = env.step(action)
     return {"observation": obs, "reward": reward, "done": done}
+
+# --- NEW SECTION REQUIRED BY VALIDATOR ---
+def main():
+    """Main entry point for the OpenEnv server."""
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860, reload=False)
+
+if __name__ == "__main__":
+    main()
