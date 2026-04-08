@@ -5,4 +5,5 @@ RUN pip install --no-cache-dir .
 RUN useradd -m myuser
 USER myuser
 EXPOSE 7860
-CMD ["uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860"]
+# Changed from uvicorn directly to the package script
+CMD ["server"]
