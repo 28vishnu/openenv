@@ -1,17 +1,16 @@
 import uvicorn
 from fastapi import FastAPI, Body, Request
-from environment import SQLEnv  # Fixed import for inside the server folder
+# Change this line specifically:
+from environment import SQLEnv 
 
 app = FastAPI()
 env = SQLEnv()
 
 @app.get("/")
-def health(): 
-    return {"status": "online"}
+def health(): return {"status": "online"}
 
 @app.post("/reset")
 async def reset(request: Request):
-    # This ensures the validator's POST request always works
     return {"observation": env.reset()}
 
 @app.post("/step")
@@ -21,8 +20,7 @@ async def step(payload: dict = Body(...)):
     return {"observation": obs, "reward": reward, "done": done}
 
 def main():
-    """Main entry point for the OpenEnv server."""
-    # Note: we use "app" here because uvicorn is running from within the server package
+    # Use the app object directly to avoid path strings
     uvicorn.run(app, host="0.0.0.0", port=7860)
 
 if __name__ == "__main__":
