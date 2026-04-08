@@ -1,7 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Body, Request
-# Change this line specifically:
-from environment import SQLEnv 
+from .environment import SQLEnv  # Note the DOT before environment
 
 app = FastAPI()
 env = SQLEnv()
@@ -20,8 +19,7 @@ async def step(payload: dict = Body(...)):
     return {"observation": obs, "reward": reward, "done": done}
 
 def main():
-    # Use the app object directly to avoid path strings
-    uvicorn.run(app, host="0.0.0.0", port=7860)
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
 
 if __name__ == "__main__":
     main()
