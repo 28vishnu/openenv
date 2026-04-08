@@ -5,7 +5,6 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "openenv-submission"
 version = "0.1.0"
-description = "Round 1 OpenEnv Submission"
 dependencies = [
     "fastapi",
     "uvicorn",
@@ -15,5 +14,4 @@ dependencies = [
 ]
 
 [project.scripts]
-# This MUST point to the main function in your app.py
 server = "server.app:main"
